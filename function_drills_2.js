@@ -69,5 +69,96 @@ let decodedWord6 = decode('brown');
 let decodedWord7 = decode('croon');
 let decodedWord8 = decode('droop');
 
-console.log(`${decodedWord1}${decodedWord2}${decodedWord3}${decodedWord4}${decodedWord5}${decodedWord6}${decodedWord7}${decodedWord8}`);
-decodeString('craft block argon meter bells brown croon droop');
+//console.log(`${decodedWord1}${decodedWord2}${decodedWord3}${decodedWord4}${decodedWord5}${decodedWord6}${decodedWord7}${decodedWord8}`);
+//decodeString('craft block argon meter bells brown croon droop');
+
+// Days in month 
+
+function daysInMonth(month,leapYear) {
+  if (leapYear === true && month === 'February') {
+    return `${month} has 29 days.`;
+  }
+  else {
+  switch(month) {
+    case 'January':
+    case 'March':
+    case 'May':
+    case 'July':
+    case 'August':
+    case 'October':
+    case 'December':
+      return `${month} has 31 days.`;
+      break;
+    case 'April':
+    case 'June':
+    case 'September':
+    case 'November':
+      return `${month} has 30 days.`;
+      break;
+    case 'February':
+      return `${month} has 28 days.`;
+      break;
+    default: 
+      return 'Must provide a valid month.'
+  }
+}
+}
+
+//let daysValue = daysInMonth('February', true);
+//console.log(daysValue);
+
+//Rock, Paper, Scissors
+
+function play(number){
+  let myHand; 
+  let computerNumber = Math.floor(Math.random() * 3) + 1;
+  let computerHand;
+  if (number === 1) {
+    myHand = 'rock';
+  }
+  else if (number === 2) {
+    myHand = 'paper';
+  }
+  else if (number === 3) {
+    myHand = 'scissors';
+  }
+  else {
+    throw new Error('Please select a number between 1-3.');
+  }
+
+  if (computerNumber === 1) {
+    computerHand = 'rock';
+  }
+  else if (computerNumber === 2) {
+    computerHand = 'paper';
+  }
+  else if (computerNumber === 3) {
+    computerHand = 'scissors';
+  }
+
+  if (myHand === computerHand) {
+    return 'The game is tied.';
+  }
+  else if (myHand === 'rock' && computerHand === 'scissors') {
+    return `My ${myHand} beats computer's ${computerHand}.`;
+  }
+  else if (myHand === 'rock' && computerHand === 'paper') {
+    return `Computer's ${computerHand} beats my ${myHand}.`;
+  }
+  else if (myHand === 'paper' && computerHand === 'scissors') {
+    return `Computer's ${computerHand} beats my ${myHand}.`;
+  }
+  else if (myHand === 'paper' && computerHand === 'rock') {
+    return `My ${myHand} beats computer's ${computerHand}.`;
+  }
+  else if (myHand === 'scissors' && computerHand === 'rock') {
+    return `Computer's ${computerHand} beats my ${myHand}.`;
+  }
+  else {
+    return `My ${myHand} beats computer's ${computerHand}.`;
+  }
+
+}
+
+//let game = play(3);
+//console.log(game);
