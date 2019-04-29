@@ -16,7 +16,7 @@ function jediName(firstName, lastName) {
   return finalJediName;
 }
 let myName = jediName('Lucas', 'Vocos');
-// console.log(myName);
+console.log(myName);
 
 
 // Beyond function
@@ -32,7 +32,7 @@ function beyond(num) {
     console.log('Staying home.');
   }
 }
-// beyond(Infinity);
+beyond(Infinity);
 
 // Cracking the code
 
