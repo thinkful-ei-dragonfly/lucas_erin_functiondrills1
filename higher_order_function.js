@@ -40,5 +40,24 @@ const filteredNames = filter(myNames, function(name) {
   return name[0] === 'R';
 });
 
-console.log(filteredNames) // => ['Rich', 'Ray']
+console.log(filteredNames); // => ['Rich', 'Ray']
 // <---- DO NOT EDIT BETWEEN THESE LINES
+
+
+// Function as return value
+
+function hazardWarningCreator(typeOfWarning) {
+  let warningCounter = 0;
+
+  return (function(location){
+    warningCounter++;
+    console.log(`DANGER! There is ${typeOfWarning} hazard at ${location}`);
+    console.log(`The ${typeOfWarning} hazard alert has triggered ${warningCounter} time(s) today!`);
+  });
+}
+const rocksWarning = hazardWarningCreator('Rocks on the road');
+const rainWarning = hazardWarningCreator('Road is slippery');
+const fogWarning = hazardWarningCreator('Low visibility');
+
+fogWarning('2nd Avenue');
+// This somehow passed in the second 'location' argument, but not sure how it works exactly
