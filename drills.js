@@ -11,11 +11,16 @@ function yearOfBirth(age) {
 
 function createGreeting(name, age) {
   const birthYear = yearOfBirth(age);
-  return `Hi my name is ${name} and I'm ${age} years old.  I was born in ${birthYear}.`;
+  if (((age.length > 0) && (typeof age === 'number')) && ((name.length > 0) && (typeof name === 'string'))) {
+    return `Hi my name is ${name} and I'm ${age} years old.  I was born in ${birthYear}.`;
 }
+  else {
+    throw new Error('Arguments not valid');
+  }
+
 
 try {
-  const greeting = createGreeting();
+  const greeting = createGreeting('Erin', 25);
   console.log(greeting);
 } catch(e){
   console.error(e.message);
