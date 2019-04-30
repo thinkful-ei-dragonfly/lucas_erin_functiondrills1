@@ -13,7 +13,7 @@ function hello() {
 function goodbye() {
   console.log('Goodbye world');
 }
-let hi = repeat(goodbye,100);
+let hi = repeat(goodbye,1);
 
 // Functions as Arguments
 
@@ -51,8 +51,15 @@ function hazardWarningCreator(typeOfWarning) {
 
   return (function(location){
     warningCounter++;
-    console.log(`DANGER! There is ${typeOfWarning} hazard at ${location}`);
-    console.log(`The ${typeOfWarning} hazard alert has triggered ${warningCounter} time(s) today!`);
+    if (warningCounter === 1) {
+      console.log(`DANGER! There is ${typeOfWarning} hazard at ${location}`);
+      console.log(`The ${typeOfWarning} hazard alert has triggered ${warningCounter} time today!`);
+    }
+    else {
+      console.log(`DANGER! There is ${typeOfWarning} hazard at ${location}`);
+      console.log(`The ${typeOfWarning} hazard alert has triggered ${warningCounter} time(s) today!`);
+    }
+
   });
 }
 const rocksWarning = hazardWarningCreator('Rocks on the road');
@@ -60,4 +67,39 @@ const rainWarning = hazardWarningCreator('Road is slippery');
 const fogWarning = hazardWarningCreator('Low visibility');
 
 fogWarning('2nd Avenue');
-// This somehow passed in the second 'location' argument, but not sure how it works exactly
+fogWarning('34th street');
+fogWarning('everywhere');
+fogWarning();
+// ^^^ This somehow passed in the second 'location' argument, but not sure how it works exactly
+
+
+// forEach, filter, and Map
+
+function turtleSteps(arr){
+  let steps = arr.filter(move => ((move[0] >= 0) && (move[1] >= 0))).map(move => move[0] + move[1]);
+  steps.forEach(function(key, i){
+    console.log(`Movement #${i+1}: ${key} Steps`);
+  });
+}
+turtleSteps([[0, 0], [0, 5], [-1, -3], [-3, 1], [2, -4], [3, 2]]);
+
+
+// Reduce
+
+function decodeSentence(string){
+  let wordArray = string.split(' ');
+  function constructWords(sentence, word){
+    if (word.length === 3) {
+
+      console.log(`sentence is ${sentence}\n word is ${word}`);
+      return sentence += ' ';
+
+    } else {
+      word[word.length - 1].toUpperCase();
+      console.log(`sentence is ${sentence}\n word is ${word}`);
+      return sentence += word;
+    }
+  }
+  wordArray.reduce(constructWords, '');
+}
+let decodedResult = decodeSentence('noggin oreo the moon time tele steed his tent apollo her lives though shoo tofu budapest');
